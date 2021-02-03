@@ -1,0 +1,59 @@
+<!-- Custom Universal Sharpspring Form  -->
+<script type="text/javascript">
+    console.log('Custom SharpSpring code is executing')
+    var customFormMap = {
+        'sharpspringContactUs':  'S7JINEy0tEzTTTOwNNM1MTJL0U1MNjIBco0NjA3NDdIsUxIB',
+        'comp-kkor76vx':  'S7JINEy0tEzTTTOwNNM1MTJL0U1MNjIBco0NjA3NDdIsUxIB',
+        'sharpspringCbdBrandProtection': 'MzEwNU0xTk7RtTQzStE1MTew0E00tjDVNUkxsUi2TDFNMU0zAQA',
+        'sharpspringCrisis': 'S0q2TDYwSTPVtTAxMtM1sTBN1k0yMDLQTQXyUw0sEhONU1MA',
+        'sharpspringMediaRelations': 'M0sxMkk0SzPTNTBONtE1STGw0LU0ME7VTTUzSjQ2MzUxMDYyBQA',
+        'sharpspringLiveEventSignUp': 'MzM2TjQ1TErStUxMMtQ1MQUSFhZJJromScaJ5onGximWRgYA',
+    }
+    console.log('customFormMap', customFormMap);
+    /**
+     * Utility method to find what form, if any, is loaded on the page.
+     * @returns {string|null} the HTML ID of the loaded form
+     */
+    window.findCurrentSharpspringForm = function() {
+        for (var formId in customFormMap) {
+            if (!customFormMap.hasOwnProperty(formId)) {
+                continue;
+            }
+
+            var $sharpspringForm = document.getElementById(formId);
+            if ($sharpspringForm) {
+                console.log('Found form', formId);
+                return formId;
+            }
+        }
+        console.log('No forms found on the page')
+        return null;
+    }
+
+
+    window.SP_getForm = findCurrentSharpspringForm;
+
+    // Map HTML element IDs to sharpspring form IDs
+
+
+    var htmlFormId = findCurrentSharpspringForm();
+    var sharpspringFormId = customFormMap[htmlFormId];
+
+
+
+    if (sharpspringFormId) {
+        var ss_form = {'account': 'MzawMLEwMTA1BAA', 'formID': sharpspringFormId};
+        ss_form.width = '100%';
+        ss_form.height = '1000';
+        ss_form.domain = 'app-3QNNP6ZQ9U.marketingautomation.services';
+        // ss_form.hidden = {'field_id': 'value'}; // Modify this for sending hidden variables, or overriding values
+        ss_form.target_id = htmlFormId; // Optional parameter: forms will be placed inside the element with the specified id
+        ss_form.polling = true; // Optional parameter: set to true ONLY if your page loads dynamically and the id needs to be polled continually.
+        window.ss_form = ss_form;
+    } else {
+        console.log('No sharpspring form was found');
+    }
+
+</script>
+<script type="text/javascript" src="https://koi-3QNNP6ZQ9U.marketingautomation.services/client/form.js?ver=2.0.1"></script>
+
